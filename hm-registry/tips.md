@@ -18,4 +18,4 @@
      
      1)合作开发时先通过 项目--》git---》repository---》pull（拉一下）
      2）在点击项目右上角的commit图标（会自动更新出变动的文件）
-     3）点击commit 中的commit and push 
+     3）点击commit 中的commit and push
