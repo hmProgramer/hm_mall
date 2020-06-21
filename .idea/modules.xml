@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/hm.iml" filepath="$PROJECT_DIR$/hm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hm-common/hm-common.iml" filepath="$PROJECT_DIR$/hm-common/hm-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hm-gateway/hm-gateway.iml" filepath="$PROJECT_DIR$/hm-gateway/hm-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hm-item/hm-item.iml" filepath="$PROJECT_DIR$/hm-item/hm-item.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hm-item/hm-item-interface/hm-item-interface.iml" filepath="$PROJECT_DIR$/hm-item/hm-item-interface/hm-item-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hm-item/hm-item-service/hm-item-service.iml" filepath="$PROJECT_DIR$/hm-item/hm-item-service/hm-item-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hm-registry/hm-registry.iml" filepath="$PROJECT_DIR$/hm-registry/hm-registry.iml" />
+    </modules>
+  </component>
+</project>
