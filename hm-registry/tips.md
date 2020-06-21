@@ -14,3 +14,8 @@
     3）通过定义ExceptionResult返回错误结果集 （作用：通过异常对象返回了更丰富的返回结果，包含状态码，错误信息，时间戳）
     
 
+3github使用指南
+     
+     1)合作开发时先通过 项目--》git---》repository---》pull（拉一下）
+     2）在点击项目右上角的commit图标（会自动更新出变动的文件）
+     3）点击commit 中的commit and push 
