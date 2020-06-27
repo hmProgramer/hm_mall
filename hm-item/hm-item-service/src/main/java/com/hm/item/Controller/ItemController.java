@@ -1,4 +1,4 @@
-package com.hm.itemController;
+package com.hm.item.Controller;
 
 import com.hm.common.enums.ExceptionEnums;
 import com.hm.common.exception.HmException;

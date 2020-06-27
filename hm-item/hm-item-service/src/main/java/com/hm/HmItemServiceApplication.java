@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import tk.mybatis.spring.annotation.MapperScan;
 
 /**
  * Created by HM on 2020/6/14.
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @SpringBootApplication
 @EnableDiscoveryClient
+@MapperScan("com.hm.item.mapper")
 public class HmItemServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(HmItemServiceApplication.class, args);
