@@ -19,3 +19,16 @@
      1)合作开发时先通过 项目--》git---》repository---》pull（拉一下）
      2）在点击项目右上角的commit图标（会自动更新出变动的文件）
      3）点击commit 中的commit and push 
+     
+     
+4insert与insertSelectiv之间的区别 
+        比如User里面有三个字段:id name age password
+        User u=new user();
+        //u.setName("bill");
+        //mapper.insertSelective(u);
+        // 
+        //insertSelective执行对应的sql语句的时候，只插入对应的name字段
+        //sql语句如下：
+        //insert into tb_user (name) value ("bill")
+        //insert则是每个字段都要添加一遍
+        //insert into tb_user (id,name,age,password) value(null,"bill",null,null);

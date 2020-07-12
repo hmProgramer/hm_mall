@@ -17,6 +17,10 @@ zuul:
   retryable: true
   routes:
     item-service:  /item/**
+    upload-service:
+      path: /upload/**   #将api中的upload路径去掉，将upload作为upload-service中的访问路径
+      serviceId: upload-service
+      strip-prefix: false
 ribbon:
   ConnectTimeout: 1000 # 连接超时时间(ms)
   ReadTimeout: 2000 # 通信超时时间(ms)

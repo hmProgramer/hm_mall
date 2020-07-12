@@ -11,6 +11,7 @@
         <module name="hm-item-interface" />
         <module name="hm-item-service" />
         <module name="hm-registry" />
+        <module name="hm-upload" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -21,6 +22,7 @@
       <module name="hm-item-interface" target="1.8" />
       <module name="hm-item-service" target="1.8" />
       <module name="hm-registry" target="1.8" />
+      <module name="hm-upload" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

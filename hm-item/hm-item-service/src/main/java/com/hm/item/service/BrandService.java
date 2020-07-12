@@ -12,6 +12,7 @@ import com.hm.item.mapper.BrandMapper;
 import com.hm.item.pojo.Brand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import tk.mybatis.mapper.entity.Example;
@@ -53,5 +54,28 @@ public class BrandService {
         PageInfo<Brand> pageInfo = new PageInfo<>(brandList);
 
         return new  PageResult<>(pageInfo.getTotal(),brandList);
+    }
+
+    @Transactional
+    public void saveBrand(Brand brand, List<Long> cids) {
+
+        //1 先保存brand对象
+        //todo insert与insertSelectiv之间的区别
+        //todo insertSelective--有选择性的保存数据
+        brand.setId(null);
+        int count = brandMapper.insert(brand);
+        
+        //2 判断保存是否成功
+        if (count != 1) {
+            throw new HmException(ExceptionEnums.BRANDDATA_SAVE_ERROR);
+        }
+        
+        //3 处理brand与category之间的关联关系
+        for (Long cid: cids) {
+            int saveCidAndBid = brandMapper.insertCategoryBrand(cid, brand.getId());
+            if (saveCidAndBid != 1) {
+                throw new HmException(ExceptionEnums.BRANDDATA_SAVE_ERROR);
+            }
+        }
     }
 }
