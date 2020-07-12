@@ -24,7 +24,7 @@
 文件上传下载的升级
     通过fastDFS进行小文件的上传下载
     将代码中的字符串，及变量配置到配置文件中去
-    具体操作
+    具体操作步骤：
         1 在application.yml文件中配置 hm.upload.baseUrl 和 hm.upload.allowTypes属性
         2 定义 UploadProperties属性类
         3 在UploadService中注入 UploadProperties属性类 并使用属性替代字符串
