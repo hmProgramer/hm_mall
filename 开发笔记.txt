@@ -28,3 +28,41 @@
         1 在application.yml文件中配置 hm.upload.baseUrl 和 hm.upload.allowTypes属性
         2 定义 UploadProperties属性类
         3 在UploadService中注入 UploadProperties属性类 并使用属性替代字符串
+
+spu与sku的关系
+	spu：标准产品单位
+	sku：库存量单位
+	spu是一个抽象的商品集概念，作用：为了方便后台管理，
+	sku因具体特征不同而区分出的商品，sku是具体要销售的商品，用户购买的是sku
+	每一个分类都有统一的规格参数模板，但不同商品其参数值可能不同
+		商品分类与规格模板是一对一关系
+		商品分类与商品spu是一对多关系
+		规模模板与商品spu是一对多关系
+		商品spu保存有规格参数的具体值
+		因为sku的特有属性是商品规格参数的一部分，
+		所以可以将规格参数中的属性划分为 SKU 通用规格与SKU特有规格
+		所以 spu与sku是一对多关系
+		spu保存着所有sku共享的规格属性
+		sku中保存每个sku特有的规格属性
+
+
+将库存表和sku表分开处理的目的？
+	因为库存字段写频率较高，而sku的其他字段以读为主，因此我们将两张表分离，读写不会干扰
+	sku表中的indexes字段是一个特有规格属性字段，它表示spu属性模板中的对应下标组合字段
+	因为在spu表中其实已经对特有规格参数及可选项作了保存，我们在sku表中将不同的角标串联起来作为spu下不同
+	sku的标识，这就是index字段；；；、
+
+
+
+当前规格参数的显示应该是以能够查询到的所有商品为准，而不是以数据库中的所有查询区间
+解决思路是查询数据库中的商品尺寸规格，然后处理成段，再覆盖原来的值
+
+
+当实现将数据库中的数据同步到索引库时 需要用到Feign（使用feign之后，我们调用eureka 注册的其他服务，在代码中就像各个service之间相互调用那么简单。）
+同时要想再serach-service中获取品牌信息和分类等信息，如果直接在serach-service中定义接口这种做法不好，因为调用方无法知道被调用方的接口信息和参数，
+这样也将两者绑定死了
+如何来操作？
+在被调用方的item-interface中定义接口信息，在serach-service中引入hm-interface的包，然后继承interface中的接口
+@FeignClient(value = "item-service")
+public interface GoodsClient extends GoodsApi {
+}
