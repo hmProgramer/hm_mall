@@ -78,4 +78,23 @@ public class BrandService {
             }
         }
     }
+
+    public Brand queryBrandByBid(Long id) {
+        Brand brand = new Brand();
+        brand.setId(id);
+        Brand b1 = brandMapper.selectByPrimaryKey(brand);
+        if (b1 == null) {
+            throw new HmException(ExceptionEnums.BRAND_NOT_FOUND);
+        }
+        return b1;
+    }
+
+    public List<Brand> queryBrandByIds(List<Long> ids) {
+        List<Brand> brands = brandMapper.selectByIdList(ids);
+        if (CollectionUtils.isEmpty(brands)) {
+            throw new HmException(ExceptionEnums.BRAND_NOT_FOUND);
+        }
+        return brands;
+    }
+
 }

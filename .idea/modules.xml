@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/hm-item/hm-item-interface/hm-item-interface.iml" filepath="$PROJECT_DIR$/hm-item/hm-item-interface/hm-item-interface.iml" />
       <module fileurl="file://$PROJECT_DIR$/hm-item/hm-item-service/hm-item-service.iml" filepath="$PROJECT_DIR$/hm-item/hm-item-service/hm-item-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/hm-registry/hm-registry.iml" filepath="$PROJECT_DIR$/hm-registry/hm-registry.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hm-search/hm-search.iml" filepath="$PROJECT_DIR$/hm-search/hm-search.iml" />
       <module fileurl="file://$PROJECT_DIR$/hm-upload/hm-upload.iml" filepath="$PROJECT_DIR$/hm-upload/hm-upload.iml" />
     </modules>
   </component>

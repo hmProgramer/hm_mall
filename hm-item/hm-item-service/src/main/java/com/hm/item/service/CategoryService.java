@@ -30,4 +30,14 @@ public class CategoryService {
         }
         return categoryList;
     }
+
+
+    public List<Category> queryCategoryByIds(List<Long> ids) {
+        //1 查询 mapper
+        List<Category> categoryList = categoryMapper.selectByIdList(ids);
+        if (CollectionUtils.isEmpty(categoryList)){
+            throw  new HmException(ExceptionEnums.CATEGORYDATA_IS_NULL);
+        }
+        return categoryList;
+    }
 }

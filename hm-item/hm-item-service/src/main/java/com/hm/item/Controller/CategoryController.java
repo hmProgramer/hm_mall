@@ -28,8 +28,17 @@ public class CategoryController {
 
         //1 通过pid查询商品分类信息
         List<Category> categories = categoryService.queryCategoryListByParentId(pid);
-
-
         return ResponseEntity.ok(categories);
     }
+
+    /**
+     * 根据商品分类Ids查询分类
+     * @param ids
+     * @return
+     */
+    @GetMapping("list/ids")
+    public ResponseEntity<List<Category>> queryCategoryByIds(@RequestParam("ids") List<Long> ids) {
+        return ResponseEntity.ok(categoryService.queryCategoryByIds(ids));
+    }
+
 }

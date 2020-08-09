@@ -14,6 +14,7 @@
         <module>hm-item</module>
         <module>hm-common</module>
         <module>hm-upload</module>
+        <module>hm-search</module>
     </modules>
 
     <name>hm_mall</name>
