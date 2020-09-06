@@ -45,4 +45,12 @@ public interface GoodsApi {
             @RequestParam(value = "key",required = false)String key,
             @RequestParam(value = "saleable", required = false)Boolean saleable
     );
+    /**
+     * 根据spuId查询spu及skus
+     * @param spuId
+     * @return
+     */
+    @GetMapping("spu/{id}")
+    Spu querySpuBySpuId(@PathVariable("id") Long spuId);
+
 }

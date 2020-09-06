@@ -15,6 +15,8 @@
         <module>hm-common</module>
         <module>hm-upload</module>
         <module>hm-search</module>
+        <module>hm-mistakes</module>
+        <module>hm-page</module>
     </modules>
 
     <name>hm_mall</name>
