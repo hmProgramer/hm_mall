@@ -35,7 +35,7 @@ public class GoodsListener {
     }
 
     @RabbitListener(bindings = @QueueBinding(
-            value = @Queue(name = "ly.search.insert.queue", durable = "true"),
+            value = @Queue(name = "ly.search.delete.queue", durable = "true"),
             exchange = @Exchange(name = "ly.item.exchange",
                     type = ExchangeTypes.TOPIC,
                     ignoreDeclarationExceptions = "true"),
