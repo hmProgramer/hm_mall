@@ -12,7 +12,11 @@
       <module fileurl="file://$PROJECT_DIR$/hm-page/hm-page.iml" filepath="$PROJECT_DIR$/hm-page/hm-page.iml" />
       <module fileurl="file://$PROJECT_DIR$/hm-registry/hm-registry.iml" filepath="$PROJECT_DIR$/hm-registry/hm-registry.iml" />
       <module fileurl="file://$PROJECT_DIR$/hm-search/hm-search.iml" filepath="$PROJECT_DIR$/hm-search/hm-search.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hm-sms-service/hm-sms-service.iml" filepath="$PROJECT_DIR$/hm-sms-service/hm-sms-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/hm-upload/hm-upload.iml" filepath="$PROJECT_DIR$/hm-upload/hm-upload.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hm-user/hm-user.iml" filepath="$PROJECT_DIR$/hm-user/hm-user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hm-user/hm-user-interface/hm-user-interface.iml" filepath="$PROJECT_DIR$/hm-user/hm-user-interface/hm-user-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hm-user/hm-user-service/hm-user-service.iml" filepath="$PROJECT_DIR$/hm-user/hm-user-service/hm-user-service.iml" />
     </modules>
   </component>
 </project>

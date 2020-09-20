@@ -17,6 +17,8 @@
         <module>hm-search</module>
         <module>hm-mistakes</module>
         <module>hm-page</module>
+        <module>hm-user</module>
+        <module>hm-sms-service</module>
     </modules>
 
     <name>hm_mall</name>

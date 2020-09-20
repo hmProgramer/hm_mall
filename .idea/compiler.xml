@@ -14,7 +14,10 @@
         <module name="hm-page" />
         <module name="hm-registry" />
         <module name="hm-search" />
+        <module name="hm-sms-service" />
         <module name="hm-upload" />
+        <module name="hm-user-interface" />
+        <module name="hm-user-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -28,7 +31,11 @@
       <module name="hm-page" target="1.8" />
       <module name="hm-registry" target="1.8" />
       <module name="hm-search" target="1.8" />
+      <module name="hm-sms-service" target="1.8" />
       <module name="hm-upload" target="1.8" />
+      <module name="hm-user" target="1.8" />
+      <module name="hm-user-interface" target="1.8" />
+      <module name="hm-user-service" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

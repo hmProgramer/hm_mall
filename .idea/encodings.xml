@@ -11,6 +11,10 @@
     <file url="file://$PROJECT_DIR$/hm-page" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/hm-registry" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/hm-search" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hm-sms-service" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/hm-upload" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hm-user" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hm-user/hm-user-interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hm-user/hm-user-service" charset="UTF-8" />
   </component>
 </project>
