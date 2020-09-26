@@ -10,6 +10,8 @@ spring:
     hikari:
       maximum-pool-size: 30
       minimum-idle: 10
+  redis:
+    host: 192.168.1.110
   rabbitmq:
     username: leyou
     password: leyou

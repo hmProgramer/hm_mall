@@ -6,6 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="hm-auth-common" />
+        <module name="hm-auth-service" />
         <module name="hm-common" />
         <module name="hm-gateway" />
         <module name="hm-item-interface" />
@@ -22,6 +24,9 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="hm" target="1.8" />
+      <module name="hm-auth" target="1.8" />
+      <module name="hm-auth-common" target="1.8" />
+      <module name="hm-auth-service" target="1.8" />
       <module name="hm-common" target="1.8" />
       <module name="hm-gateway" target="1.8" />
       <module name="hm-item" target="1.8" />

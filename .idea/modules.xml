@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/hm.iml" filepath="$PROJECT_DIR$/hm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hm-auth/hm-auth.iml" filepath="$PROJECT_DIR$/hm-auth/hm-auth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hm-auth/hm-auth-common/hm-auth-common.iml" filepath="$PROJECT_DIR$/hm-auth/hm-auth-common/hm-auth-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hm-auth/hm-auth-service/hm-auth-service.iml" filepath="$PROJECT_DIR$/hm-auth/hm-auth-service/hm-auth-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/hm-common/hm-common.iml" filepath="$PROJECT_DIR$/hm-common/hm-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/hm-gateway/hm-gateway.iml" filepath="$PROJECT_DIR$/hm-gateway/hm-gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/hm-item/hm-item.iml" filepath="$PROJECT_DIR$/hm-item/hm-item.iml" />
