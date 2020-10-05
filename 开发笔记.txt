@@ -29,6 +29,7 @@
         2 定义 UploadProperties属性类
         3 在UploadService中注入 UploadProperties属性类 并使用属性替代字符串
 
+
 spu与sku的关系
 	spu：标准产品单位
 	sku：库存量单位
