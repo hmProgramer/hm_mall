@@ -24,6 +24,8 @@ zuul:
       path: /upload/**   #将api中的upload路径去掉，将upload作为upload-service中的访问路径
       serviceId: upload-service
       strip-prefix: false
+  add-host-header: true     #携带请求本身的head头信息
+  sensitive-headers:        #配置禁止使用的头信息
 ribbon:
   ConnectTimeout: 1000 # 连接超时时间(ms)
   ReadTimeout: 2000 # 通信超时时间(ms)
@@ -37,3 +39,20 @@ hystrix:
         isolation:
           thread:
             timeoutInMillisecond: 10000 # 熔断超时时长：10000ms
+
+ly:
+  jwt:
+    pubKeyPath: C:\\tmp\\rsa\\rsa.pub # 公钥地址
+    expire: 30 # 过期时间,单位分钟
+    cookieName: LY_TOKEN
+    cookieMaxAge: 1800
+
+leyou:
+  filter:
+    allowPaths:
+      - /api/auth
+      - /api/search
+      - /api/user/register
+      - /api/user/check
+      - /api/user/code
+      - /api/item

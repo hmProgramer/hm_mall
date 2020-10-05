@@ -67,18 +67,34 @@ public class AuthController {
      */
     @GetMapping("verify")
     public ResponseEntity<UserInfo> verifyUser(@CookieValue("LY_TOKEN") String token, HttpServletRequest request, HttpServletResponse response) {
+//        try {
+//            //从Token中获取用户信息
+//            UserInfo userInfo = JwtUtils.getUserInfo(props.getPublicKey(), token);
+//            //成功，刷新Token
+//            String newToken = JwtUtils.generateToken(userInfo, props.getPrivateKey(), props.getExpire());
+//            //将新的Token写入cookie中，并设置httpOnly
+//            CookieUtils.newBuilder(response).httpOnly().maxAge(props.getCookieMaxAge()).request(request).build(props.getCookieName(), newToken);
+//            return ResponseEntity.ok(userInfo);
+//        } catch (Exception e) {
+//            //Token无效
+//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+//        }
+
         try {
-            //从Token中获取用户信息
-            UserInfo userInfo = JwtUtils.getUserInfo(props.getPublicKey(), token);
-            //成功，刷新Token
-            String newToken = JwtUtils.generateToken(userInfo, props.getPrivateKey(), props.getExpire());
-            //将新的Token写入cookie中，并设置httpOnly
-            CookieUtils.newBuilder(response).httpOnly().maxAge(props.getCookieMaxAge()).request(request).build(props.getCookieName(), newToken);
+            // 从token中解析token信息
+            UserInfo userInfo = JwtUtils.getUserInfo(this.props.getPublicKey(),token);
+            // 解析成功要重新刷新token
+            token = JwtUtils.generateToken(userInfo, this.props.getPrivateKey(), this.props.getExpire());
+            // 更新cookie中的token
+            CookieUtils.setCookie(request, response, this.props.getCookieName(), token, this.props.getCookieMaxAge());
+
+            // 解析成功返回用户信息
             return ResponseEntity.ok(userInfo);
         } catch (Exception e) {
-            //Token无效
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+            e.printStackTrace();
         }
+        // 出现异常则，响应500
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 
     /**

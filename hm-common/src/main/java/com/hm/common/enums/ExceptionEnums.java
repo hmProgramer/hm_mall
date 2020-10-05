@@ -28,6 +28,7 @@ public enum  ExceptionEnums {   //枚举是具有固定实例个数的对象
     STOCK_NOT_ENOUGH(500, "商品库存不足"),
     STOCK_NOT_FOUND(204, "库存查询失败"),
 
+    VERIFY_CODE_NOT_MATCHING(400, "验证码不匹配"),
     INVALID_USER_DATA_TYPE(400, "参数错误"),
     SPEC_PARAM_NOT_FOUND(204, "规格参数查询失败"),
     UPDATE_SPEC_PARAM_FAILED(500, "商品规格参数更新失败"),

@@ -16,9 +16,9 @@ eureka:
     instance-id: ${spring.application.name}:${server.port}
 ly:
   jwt:
-    secret: ly@Login(Auth}*^31)&yun6%f3q2 # 登录校验的密钥
-    pubKeyPath: /Users/bystander/id_rsa.pub # 公钥地址
-    priKeyPath: /Users/bystander/id_rsa.pri # 私钥地址
+    secret: ly@Login(Auth}*^31)&heima%111 # 登录校验的密钥
+    pubKeyPath: C:\\tmp\\rsa\\rsa.pub # 公钥地址
+    priKeyPath: C:\\tmp\\rsa\\rsa.pri # 私钥地址
     expire: 30 # 过期时间,单位分钟
     cookieName: LY_TOKEN
     cookieMaxAge: 1800

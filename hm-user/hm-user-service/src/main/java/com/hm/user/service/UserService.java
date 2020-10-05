@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
+
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -80,4 +82,62 @@ public class UserService {
 
         return user;
     }
+
+
+    public void register(User user, String code) {
+        user.setId(null);
+        user.setCreated(new Date());
+        String key = KEY_PREFIX + user.getPhone();
+
+        String value = redisTemplate.opsForValue().get(key);
+
+        if (!StringUtils.equals(code, value)) {
+            //验证码不匹配
+            throw new HmException(ExceptionEnums.VERIFY_CODE_NOT_MATCHING);
+        }
+
+        //生成盐
+        String salt = CodecUtils.generateSalt();
+        user.setSalt(salt);
+
+        //生成密码
+        String md5Pwd = CodecUtils.md5Hex(user.getPassword(), user.getSalt());
+
+        user.setPassword(md5Pwd);
+
+        //保存到数据库
+        int count = userMapper.insert(user);
+
+        if (count != 1) {
+            throw new HmException(ExceptionEnums.INVALID_PARAM);
+        }
+
+        //把验证码从Redis中删除
+        redisTemplate.delete(key);
+    }
+
+    public void addUser(String username, String password) {
+        User user = new User();
+        user.setId(null);
+        user.setUsername(username);
+        user.setCreated(new Date());
+        user.setPassword(password);
+        //生成盐
+        String salt = CodecUtils.generateSalt();
+        user.setSalt(salt);
+
+        //生成密码
+        String md5Pwd = CodecUtils.md5Hex(user.getPassword(), user.getSalt());
+
+        user.setPassword(md5Pwd);
+
+        //保存到数据库
+        int count = userMapper.insert(user);
+
+        if (count != 1) {
+            throw new HmException(ExceptionEnums.INVALID_PARAM);
+        }
+
+    }
 }
+
