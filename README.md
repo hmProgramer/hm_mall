@@ -236,12 +236,12 @@ spu与sku的关系
           https://blog.csdn.net/weixin_45443931/article/details/98869617?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.channel_param&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.channel_param
                   
 购物车  
-        购物车实现技术
-            
-            通过redis（hash结构）来实现
-            购物车结构是一个双层Map：Map<String,Map<String,String>>
-             - 第一层Map，Key是用户id
-             - 第二层Map，Key是购物车中商品id，值是购物车数据
+       
+            购物车实现技术     
+                通过redis（hash结构）来实现
+                购物车结构是一个双层Map：Map<String,Map<String,String>>
+                 - 第一层Map，Key是用户id
+                 - 第二层Map，Key是购物车中商品id，值是购物车数据
             
             购物车逻辑
                 1 通过拦截器来解析cookie中的token，返回user对象，并存入到threadloacal线程域中
