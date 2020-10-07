@@ -167,8 +167,9 @@ spu与sku的关系
 
 
 授权中心
-
-    1 有状态与无状态区分
+   
+1 有状态与无状态区分
+    
         有状态服务：即服务端需要记录每次会话的客户端信息，从而识别客户端身份，根据用户身份进行请求的处理
         缺点：1）服务端保存了大量的数据，增加了服务端的压力
               2）服务端保存了用户的状态，无法进行水平扩展
@@ -179,7 +180,8 @@ spu与sku的关系
               3）客户端的请求信息 不依赖与服务端的信息 任何多次请求不需要必须访问到同一台服务
         典型代表：rest服务
         
-    2 如何实现无状态服务？
+2 如何实现无状态服务？
+
        无状态登录的流程：
        1）客户端第一次请求访问服务端，服务端会对用户进行信息认证
        2）认证通过后，会将用户信息加密形成token，返回给客户端，作为登录凭证
@@ -188,7 +190,8 @@ spu与sku的关系
        登录过程中的关键点：token的安全性
        具体实现：我们将采用`JWT + RSA非对称加密`
        
-    3 结合RSA的鉴权
+3 结合RSA的鉴权
+
         1）用户在客户端请求 发起认证
         2）授权中心会对用户信息进行校验，然后通过私钥生成jwt凭证
         3）返回jwt给用户
@@ -202,7 +205,68 @@ spu与sku的关系
         
         2）服务鉴权
         微服务之间通过鉴权中心进行认证
+        用户登录校验       问题：因为cokile的有效期是30分钟，所以当用户在活跃时，应该刷新token，重新生成token
+        
+在zuul里面完成鉴权操作
 
+        需要在网关中编写拦截逻辑，当用户请求到达后，解析cookie，从cookie中获得token，进而判断token是否有效
+        具体操作：
+        在网关中添加AuthFilter的拦截器
+            包括: 添加过滤器（这里用前置过滤器）
+                  添加过滤器顺序
+                  是否过滤
+                  在run方法中添加拦截逻辑（1 获取request，2 获取token ，3 解析token，4 校验权限）
+                   注意 解析token失败时拦截；解析成功时 在进一步校验可以访问到的权限 
+        常见面试题
+            如果 微服务地址暴露了怎么办？
+                首先微服务地址一般是在局域网内通过zuul进行访问，对外暴露的只有zuul
+                而万一暴露了？可以通过服务间鉴权
+                定义微服务之间的权限表，将服务与服务之间的访问关系记录下来，而一个服务如果要访问另外一个服务时
+                必须要通过管理信息界面进行操作 ，同时服务与服务之间的访问要借助于鉴权中心，将服务当做具体的用户来操作，每一个服务都有
+                自己的用户名与密码
+           
+            如果cookie 被禁用了怎么办？
+                首先可以提示用户，网站必须使用cookie，不能禁用
+                或者把token 放入头中进行返回，js中获取头信息，存入web存储，每次请求都需要手动携带token写入头中
+          
+          如果cookie被盗用了怎么办？
+                加入ip地址识别身份
+                使用Https协议，防止数据泄露
+          https://blog.csdn.net/qq_38559956/article/details/103826541
+          https://blog.csdn.net/weixin_45443931/article/details/98869617?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.channel_param&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.channel_param
+                  
+购物车  
+        购物车实现技术
+            
+            通过redis（hash结构）来实现
+            购物车结构是一个双层Map：Map<String,Map<String,String>>
+             - 第一层Map，Key是用户id
+             - 第二层Map，Key是购物车中商品id，值是购物车数据
+            
+            购物车逻辑
+                1 通过拦截器来解析cookie中的token，返回user对象，并存入到threadloacal线程域中
+               
+                2 在service中通过线程域获取当前登录用户
+                 
+                3 判断当前登录用户的（redis）购物车中是否存在该商品   
+                  （如何判断，利用redis的结构特点，将商品id作为底层map的key，通过key来判断） 
+                
+                3.1存在
+                   获取原先购物车中该商品的数量，将当前商品数量累加到原有购物车中的该商品中
+                   通过redis的操作对象存入到redis购物车中     
+                3.2不存在
+                    直接通过redis操作对象将该商品存入到redis中      
+                       
+            Springmvc拦截器作用及操作：
+              通过springmvc的拦截器来解析token    
+                    具体操作 在前置拦截方法中，解析cookie中的token，返回user对象，并将user对象传递到controller中
+                    而如何传递到controller中呢？
+                        1）可以通过request 域
+                        2）可以通过threadlocal（线程域 threadlocal实质上是一种k-v结构，k是线程本身）    
+            为什么要用拦截器----》 当请求到达购物车后，要通过cookie知道当前登录用户是谁   
+                      
+                  
+                   
 
 
 

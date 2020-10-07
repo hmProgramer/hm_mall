@@ -632,8 +632,8 @@
     const params = {};
     specs.forEach(group => {
         group.params.forEach(param => {
-        params[param.id] = param.name;
-    })
+            params[param.id] = param.name;
+        })
     });
     // 初始化特有规格参数默认选中一个
     const indexes = {};
@@ -668,42 +668,42 @@
                 ly.http.get("/auth/verify").then(() => {
                     // 已登录
                     ly.http.post("/cart", {
-                    skuId: this.sku.id,
-                    title: this.sku.title,
-                    image: this.images[0],
-                    price: this.sku.price,
-                    num: this.num,
-                    ownSpec: JSON.stringify(this.ownSpec)
-                }).then(() => {
-                    // 跳转到购物车列表页
-                    window.location.href = "http://www.leyou.com/cart.html";
-            }).catch(() => {
-                    alert("添加购物车失败，请重试！");
-            })
-            }).catch(() => {
-                    // 获取以前的购物车
-                    const carts = ly.store.get("carts") || [];
-                // 获取与当前商品id一致的购物车数据
-                const cart = carts.find(c => c.skuId === this.sku.id);
-                if (cart) {
-                    // 存在，修改数量
-                    cart.num += this.num;
-                } else {
-                    // 不存在，新增
-                    carts.push({
                         skuId: this.sku.id,
                         title: this.sku.title,
                         image: this.images[0],
                         price: this.sku.price,
                         num: this.num,
                         ownSpec: JSON.stringify(this.ownSpec)
+                    }).then(() => {
+                        // 跳转到购物车列表页
+                        window.location.href = "http://www.leyou.com/cart.html";
+                    }).catch(() => {
+                        alert("添加购物车失败，请重试！");
                     })
-                }
-                // 未登录
-                ly.store.set("carts", carts);
-                // 跳转到购物车列表页
-                window.location.href = "http://www.leyou.com/cart.html";
-            })
+                }).catch(() => {
+                    // 获取以前的购物车
+                    const carts = ly.store.get("carts") || [];
+                    // 获取与当前商品id一致的购物车数据
+                    const cart = carts.find(c => c.skuId === this.sku.id);
+                    if (cart) {
+                        // 存在，修改数量
+                        cart.num += this.num;
+                    } else {
+                        // 不存在，新增
+                        carts.push({
+                            skuId: this.sku.id,
+                            title: this.sku.title,
+                            image: this.images[0],
+                            price: this.sku.price,
+                            num: this.num,
+                            ownSpec: JSON.stringify(this.ownSpec)
+                        })
+                    }
+                    // 未登录
+                    ly.store.set("carts", carts);
+                    // 跳转到购物车列表页
+                    window.location.href = "http://www.leyou.com/cart.html";
+                })
             },
             locked(id, i) {
                 // 如果只有一个可选项，永不锁定
@@ -712,10 +712,10 @@
                 let boo = true;
                 Object.keys(this.indexes).forEach(key => {
                     if (key !== id && this.indexes[key] == null) {
-                    boo = false;
-                    return;
-                }
-            });
+                        boo = false;
+                        return;
+                    }
+                });
                 if (!boo) return false;
                 // 如果当前项的组合不存在，锁定
                 const {...o} = this.indexes;
@@ -732,10 +732,10 @@
                 if (isLocked) {
                     Object.keys(this.indexes).forEach(key => {
                         if (key !== id) {
-                        const remainSpec = specialSpec[key].filter((e, j) => !this.locked(key, j));
-                        this.indexes[key] = remainSpec.length === 1 ? specialSpec[key].findIndex(e => e === remainSpec[0]) : null;
-                    }
-                })
+                            const remainSpec = specialSpec[key].filter((e, j) => !this.locked(key, j));
+                            this.indexes[key] = remainSpec.length === 1 ? specialSpec[key].findIndex(e => e === remainSpec[0]) : null;
+                        }
+                    })
                 }
 
             }
@@ -758,13 +758,13 @@
                 const ownSpec = JSON.parse(this.sku.ownSpec);
                 specs.forEach(group => {
                     group.params.forEach(param => {
-                    if (param.generic) {
-                    param.value = genericSpec[param.id];
-                } else {
-                    param.value = ownSpec[param.id];
-                }
-            })
-            })
+                        if (param.generic) {
+                            param.value = genericSpec[param.id];
+                        } else {
+                            param.value = ownSpec[param.id];
+                        }
+                    })
+                })
                 return specs;
             },
             ownSpec() {
@@ -772,13 +772,13 @@
                 const obj = {};
                 Object.keys(ownSpec).forEach(id => {
                     obj[this.params[id]] = ownSpec[id];
-            })
+                })
                 return obj;
             }
         },
         components: {
             lyTop: () => import('/js/pages/top.js')
-    }
+        }
     });
 </script>
 

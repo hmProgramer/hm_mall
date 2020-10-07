@@ -7,6 +7,8 @@ spring:
     elasticsearch:
       cluster-name: elasticsearch
       cluster-nodes: 192.168.1.110:9300
+  jackson:
+    default-property-inclusion: non_null
   rabbitmq:
     virtual-host: /leyou
     username: leyou

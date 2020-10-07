@@ -20,6 +20,7 @@
         <module>hm-user</module>
         <module>hm-sms-service</module>
         <module>hm-auth</module>
+        <module>hm-cart</module>
     </modules>
 
     <name>hm_mall</name>
