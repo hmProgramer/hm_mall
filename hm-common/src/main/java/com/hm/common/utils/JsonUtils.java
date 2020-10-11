@@ -86,7 +86,14 @@ public class JsonUtils {
             return null;
         }
     }
-
+    public static <T> T toBean(String json, Class<T> tClass) {
+        try {
+            return mapper.readValue(json, tClass);
+        } catch (IOException e) {
+            logger.error("json解析出错：" + json, e);
+            return null;
+        }
+    }
     public static String toString(Object obj) {
         if (obj == null) {
             return null;

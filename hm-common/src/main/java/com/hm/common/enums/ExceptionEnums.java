@@ -39,6 +39,8 @@ public enum  ExceptionEnums {   //枚举是具有固定实例个数的对象
     USERNAME_OR_PASSWORD_ERROR(400, "账号或密码错误"),
     PASSWORD_NOT_MATCHING(400, "密码错误"),
     USER_NOT_EXIST(404, "用户不存在"),
+    ORDER_NOT_FOUND(400, "订单不存在"),
+    CART_NOT_FOUND(400, "购物车对象不存在"),
 
     SPEC_GROUP_CREATE_FAILED(500, "新增规格组失败"),
     SPEC_GROUP_NOT_FOUND(204, "规格组查询失败"),
