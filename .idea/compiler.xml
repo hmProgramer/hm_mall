@@ -14,6 +14,7 @@
         <module name="hm-item-interface" />
         <module name="hm-item-service" />
         <module name="hm-mistakes" />
+        <module name="hm-order" />
         <module name="hm-page" />
         <module name="hm-registry" />
         <module name="hm-search" />
@@ -35,6 +36,7 @@
       <module name="hm-item-interface" target="1.8" />
       <module name="hm-item-service" target="1.8" />
       <module name="hm-mistakes" target="1.8" />
+      <module name="hm-order" target="1.8" />
       <module name="hm-page" target="1.8" />
       <module name="hm-registry" target="1.8" />
       <module name="hm-search" target="1.8" />

@@ -1,7 +1,7 @@
-package com.hm.web;
+package com.hm.cart.web;
 
-import com.hm.pojo.Cart;
-import com.hm.service.CartService;
+import com.hm.cart.pojo.Cart;
+import com.hm.cart.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

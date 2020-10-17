@@ -1,4 +1,4 @@
-package com.hm.pojo;
+package com.hm.cart.pojo;
 
 import lombok.Data;
 

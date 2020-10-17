@@ -21,6 +21,7 @@ zuul:
     user-service:  /user/**
     auth-service: /auth/** # 授权中心微服务
     cart-service: /cart/**
+    order-service: /order/**
     upload-service:
       path: /upload/**   #将api中的upload路径去掉，将upload作为upload-service中的访问路径
       serviceId: upload-service

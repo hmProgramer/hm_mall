@@ -1,12 +1,12 @@
-package com.hm.service;
+package com.hm.cart.service;
 
 
 import com.hm.auth.entity.UserInfo;
 import com.hm.common.enums.ExceptionEnums;
 import com.hm.common.exception.HmException;
 import com.hm.common.utils.JsonUtils;
-import com.hm.filter.LoginInterceptor;
-import com.hm.pojo.Cart;
+import com.hm.cart.filter.LoginInterceptor;
+import com.hm.cart.pojo.Cart;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.BoundHashOperations;
@@ -14,7 +14,6 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 /**

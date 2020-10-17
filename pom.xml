@@ -21,6 +21,7 @@
         <module>hm-sms-service</module>
         <module>hm-auth</module>
         <module>hm-cart</module>
+        <module>hm-order</module>
     </modules>
 
     <name>hm_mall</name>

@@ -1,6 +1,7 @@
-package com.hm.config;
+package com.hm.order.config;
 
-import com.hm.filter.LoginInterceptor;
+
+import com.hm.order.filter.LoginInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;

@@ -41,11 +41,13 @@ public enum  ExceptionEnums {   //枚举是具有固定实例个数的对象
     USER_NOT_EXIST(404, "用户不存在"),
     ORDER_NOT_FOUND(400, "订单不存在"),
     CART_NOT_FOUND(400, "购物车对象不存在"),
+    RECEIVER_ADDRESS_NOT_FOUND(400, "购物车对象不存在"),
 
     SPEC_GROUP_CREATE_FAILED(500, "新增规格组失败"),
     SPEC_GROUP_NOT_FOUND(204, "规格组查询失败"),
     DELETE_SPEC_GROUP_FAILED(500, "商品规格组删除失败"),
     UPDATE_SPEC_GROUP_FAILED(500, "商品规格组更新失败"),
+    CREATE_ORDER_ERROR(500, "创建订单失败"),
     ;
     private int code;
     private String msg;

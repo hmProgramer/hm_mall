@@ -1,4 +1,4 @@
-package com.hm.web;
+package com.hm.cart.web;
 
 import com.hm.auth.entity.UserInfo;
 import com.hm.auth.utils.JwtUtils;
