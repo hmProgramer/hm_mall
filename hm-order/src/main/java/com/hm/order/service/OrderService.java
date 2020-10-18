@@ -18,6 +18,7 @@ import com.hm.order.mapper.OrderStatusMapper;
 import com.hm.order.pojo.Order;
 import com.hm.order.pojo.OrderDetail;
 import com.hm.order.pojo.OrderStatus;
+import com.hm.order.utils.PayHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,14 @@ public class OrderService {
 
     @Autowired
     private GoodsClient goodsClient;
+
+    @Autowired
+    private PayLogService payLogService;
+
+
+
+    @Autowired
+    private PayHelper payHelper;
 
     @Transactional
     public Long createOrder(OrderDto orderDto) {
@@ -152,4 +161,41 @@ public class OrderService {
 
         return orderId;
     }
+
+
+    public String generateUrl(Long orderId) {
+        //根据订单ID查询订单
+        Order order = queryById(orderId);
+        //判断订单状态
+        if (order.getOrderStatus().getStatus() != OrderStatusEnum.INIT.value()) {
+            throw new HmException(ExceptionEnums.ORDER_STATUS_EXCEPTION);
+        }
+
+        //todo 这里传入一份钱，用于测试使用，实际中使用订单中的实付金额
+        String url = payHelper.createPayUrl(orderId, "乐优商城测试", /*order.getActualPay()*/1L);
+        if (StringUtils.isBlank(url)) {
+            throw new HmException(ExceptionEnums.CREATE_PAY_URL_ERROR);
+        }
+
+        //生成支付日志
+        payLogService.createPayLog(orderId, order.getActualPay());
+
+        return url;
+
+    }
+    public Order queryById(Long orderId) {
+        Order order = orderMapper.selectByPrimaryKey(orderId);
+        if (order == null) {
+            throw new HmException(ExceptionEnums.ORDER_NOT_FOUND);
+        }
+        OrderDetail orderDetail = new OrderDetail();
+        orderDetail.setOrderId(orderId);
+        List<OrderDetail> orderDetails = orderDetailMapper.select(orderDetail);
+        order.setOrderDetails(orderDetails);
+        OrderStatus orderStatus = orderStatusMapper.selectByPrimaryKey(orderId);
+        order.setOrderStatus(orderStatus);
+        return order;
+    }
+
+
 }

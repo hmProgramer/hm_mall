@@ -48,6 +48,10 @@ public enum  ExceptionEnums {   //枚举是具有固定实例个数的对象
     DELETE_SPEC_GROUP_FAILED(500, "商品规格组删除失败"),
     UPDATE_SPEC_GROUP_FAILED(500, "商品规格组更新失败"),
     CREATE_ORDER_ERROR(500, "创建订单失败"),
+    WX_PAY_SIGN_INVALID(400, "微信支付签名异常"),
+    WX_PAY_NOTIFY_PARAM_ERROR(400, "微信支付回调参数异常"),
+    ORDER_STATUS_EXCEPTION(500, "订单状态异常"),
+    CREATE_PAY_URL_ERROR(500, "常见支付链接异常"),
     ;
     private int code;
     private String msg;

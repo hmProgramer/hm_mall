@@ -42,10 +42,10 @@ public class OrderController {
      * @param orderId
      * @return
      */
-//    @GetMapping("url/{id}")
-//    public ResponseEntity<String> generateUrl(@PathVariable("id") Long orderId) {
-//        return ResponseEntity.status(HttpStatus.OK).body(orderService.generateUrl(orderId));
-//    }
+    @GetMapping("url/{id}")
+    public ResponseEntity<String> generateUrl(@PathVariable("id") Long orderId) {
+        return ResponseEntity.status(HttpStatus.OK).body(orderService.generateUrl(orderId));
+    }
 
     /**
      * 根据订单ID查询订单详情

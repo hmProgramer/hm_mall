@@ -301,7 +301,8 @@ spu与sku的关系
                 而消息发送后，商品服务是否减库存成功是不知道的，
                 而如何解决分布式事务问题呢？
                     TCC模式  https://www.cnblogs.com/jajian/p/10014145.html
-                    
+                    https://www.baidu.com/link?url=rNXi-Le5znbe7KEOH920oiGYNYnoW7nYkPZSGiLkONB2sFhIxcVONlXTwLlLLrh0JJBWcuabtZNm_f9cPsY764eWZjrFmA1sAIPktztmWKm&wd=&eqid=b49f94fc000374a2000000025f8a7d8e
+                    https://sourcegraph.com/github.com/Wasabi1234/Java-Interview-Tutorial/-/blob/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/RabbitMQ/RabbitMQ%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.md
             如何避免超卖现象？
                 不能通过加锁，因为在分布式集群环境下加锁只能锁住他自己的jvm，根本不能保证线程安全   
                 所以要用分布式锁，而分布式锁如何实现呢？
